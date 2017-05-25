@@ -4,6 +4,16 @@
  * Module dependencies.
  */
 
+require('@google-cloud/trace-agent').start({
+  samplingRate: 100,
+  bufferSize: 100,
+  logLevel: 3,
+  enhancedDatabaseReporting: true,
+  ignoreUrls: ['/?json=1']
+});
+var clsBluebird = require('cls-bluebird');
+var cls = require('continuation-local-storage');
+clsBluebird(cls.getNamespace('com.google.cloud.trace'));
 var app = require('../app');
 var debug = require('debug')('express-sequelize');
 var http = require('http');

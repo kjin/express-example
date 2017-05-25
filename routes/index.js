@@ -6,10 +6,14 @@ router.get('/', function(req, res) {
   models.User.findAll({
     include: [ models.Task ]
   }).then(function(users) {
-    res.render('index', {
-      title: 'Sequelize: Express Example',
-      users: users
-    });
+    if (req.query.json) {
+      res.json(users);
+    } else {
+      res.render('index', {
+        title: 'Sequelize: Express Example',
+        users: users
+      });
+    }
   });
 });
 
