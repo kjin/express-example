@@ -5,8 +5,8 @@
  */
 
 require('@google-cloud/trace-agent').start({
-  samplingRate: 100,
-  bufferSize: 100,
+  samplingRate: 0,
+  bufferSize: 1,
   logLevel: 3,
   enhancedDatabaseReporting: true,
   ignoreUrls: ['/?json=1']
